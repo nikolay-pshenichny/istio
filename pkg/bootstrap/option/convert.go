@@ -138,6 +138,8 @@ func tlsContextConvert(tls *networkingAPI.ClientTLSSettings, sniName string, met
 		// No TLS.
 		return nil
 	}
+	//TODO:NIKO: syncup with Rama about this - https://github.com/istio/istio/pull/25070/files#diff-b5983b371f8b8239c127422f6ff2b2a6R143
+	// earlier, the logic was - to use sniName only if tlsContext.Sni is empty
 	if len(sniName) > 0 {
 		tlsContext.Sni = sniName
 	}

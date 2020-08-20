@@ -170,8 +170,15 @@ func StatsdAddress(value string) Instance {
 }
 
 func TracingTLS(value *networkingAPI.ClientTLSSettings, metadata *model.BootstrapNodeMetadata, isH2 bool) Instance {
+	//TODO:NIKO: is it correct that we hardcode SNI here?
+	// The logic eas different before - https://github.com/istio/istio/pull/23220/files#diff-b5983b371f8b8239c127422f6ff2b2a6L121
+	sni := "tracer"
+	if value != nil && value.Sni != "" {
+		sni = value.Sni
+	}
+
 	return newOptionOrSkipIfZero("tracing_tls", value).
-		withConvert(transportSocketConverter(value, "tracer", metadata, isH2))
+		withConvert(transportSocketConverter(value, sni, metadata, isH2))
 }
 
 func EnvoyMetricsServiceAddress(value string) Instance {

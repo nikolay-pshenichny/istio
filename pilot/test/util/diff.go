@@ -17,13 +17,12 @@ package util
 import (
 	"errors"
 	"io/ioutil"
+	"istio.io/pkg/env"
 	"regexp"
 	"strings"
 	"testing"
 
 	"github.com/pmezard/go-difflib/difflib"
-
-	"istio.io/pkg/env"
 )
 
 const (
