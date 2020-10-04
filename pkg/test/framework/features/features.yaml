@@ -64,6 +64,7 @@ features:
     peer:
       secure-naming:
       trust-domain-validation:
+      file-mounted-certs:
     user:
     ingress:
       mtls:

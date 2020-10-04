@@ -143,7 +143,7 @@ func DeleteKubeSecret(t test.Failer, ctx framework.TestContext, credNames []stri
 		err := cluster.CoreV1().Secrets(systemNS.Name()).Delete(context.TODO(), cn,
 			metav1.DeleteOptions{GracePeriodSeconds: &immediate})
 		if err != nil {
-			t.Fatalf("Failed to create secret (error: %s)", err)
+			t.Fatalf("Failed to delete secret (error: %s)", err)
 		}
 	}
 }
